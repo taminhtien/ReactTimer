@@ -1,7 +1,7 @@
-var React = require('react');
-var Navigation = require('Navigation')
+import React from 'react'
+import Navigation from 'Navigation'
 
-var Main = (props) => {
+const Main = (props) => {
   return (
     <div>
       <div>
@@ -12,7 +12,7 @@ var Main = (props) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-module.exports = Main;
+export default Main

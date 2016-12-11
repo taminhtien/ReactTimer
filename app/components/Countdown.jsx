@@ -1,32 +1,28 @@
 import React from 'react'
 import Clock from 'Clock'
+import CountdownForm from 'CountdownForm'
 
 class Countdown extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      secondsElapsed: 100
+      count: 0
     }
   }
 
-  tick() {
-    this.setState((prevState) => ({
-      secondsElapsed: prevState.secondsElapsed - 1
-    }))
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.tick(), 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
+  handleSetCountdown(seconds) {
+    this.setState({
+      count: seconds
+    })
   }
 
   render() {
+    const { count } = this.state
+
     return (
       <div>
-        <Clock totalSeconds={this.state.secondsElapsed}/>
+        <Clock totalSeconds={count}/>
+        <CountdownForm onSetCountdown={(seconds) => this.handleSetCountdown(seconds)}/>
       </div>
     )
   }

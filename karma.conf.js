@@ -1,4 +1,6 @@
 // How we want to run our test
+// Karma: A simple tool that allows you to execute JavaScript code in multiple real browsers.
+// We’ll also need the karma-mocha adapter so we can use mocha as a test framework with karma
 
 var webpackConfig = require('./webpack.config.js')
 

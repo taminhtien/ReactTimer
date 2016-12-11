@@ -30,13 +30,12 @@ class Countdown extends React.Component {
         case 'started':
           this.setTimer()
           break
+        case 'stopped':
+          this.setState({count: 0})
         case 'paused':
           clearInterval(this.timer)
+          this.timer = undefined
           break
-        case 'stopped':
-          this.setState({
-          count: 0
-        })
       }
     }
   }
@@ -48,22 +47,8 @@ class Countdown extends React.Component {
     })
   }
 
-  handlePause() {
-    this.setState({
-      status: 'paused'
-    })
-  }
-
-  handleStart() {
-    this.setState({
-      status: 'started'
-    })
-  }
-
-  handleClear() {
-    this.setState({
-      status: 'stopped'
-    })
+  handleStatusChange(newStatus) {
+    this.setState({status: newStatus})
   }
 
   renderControl() {
@@ -72,7 +57,7 @@ class Countdown extends React.Component {
     if(status === 'stopped') {
       return <CountdownForm onSetCountdown={(seconds) => this.handleSetCountdown(seconds)}/>
     } else {
-      return <Controls status={this.state.status} handlePause={() => this.handlePause()} handleStart={() => this.handleStart()} handleClear={() => this.handleClear()}/>
+      return <Controls status={this.state.status} onStatusChange={(newStatus) => this.handleStatusChange(newStatus)}/>
     }
   }
 

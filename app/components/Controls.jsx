@@ -16,6 +16,7 @@ class Controls extends React.Component {
       <div className='controls'>
         { status === 'started' && <button className='button secondary' onClick={() => this.onStatusChange('paused')}>Pause</button> }
         { status === 'paused' && <button className='button primary' onClick={() => this.onStatusChange('started')}>Start</button> }
+        { status === 'stopped' && <button className='button primary' onClick={() => this.onStatusChange('started')}>Start</button> }
         <button className='button alert hollow' onClick={() => this.onStatusChange('stopped')}>Clear</button>
       </div>
     )

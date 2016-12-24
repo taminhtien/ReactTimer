@@ -9,7 +9,11 @@ module.exports = (config) => {
     browsers: ['Chrome'], // We want to use Chrome to test
     singleRun: true,
     frameworks: ['mocha'], // Testing framework with describe and it (like rspec)
-    files: ['app/tests/**/*.test.jsx'], // Which files to test
+    files: [
+      'node_modules/jquery/dist/jquery.min.js',
+      'node_modules/foundation-sites/dist/foundation.min.js',
+      'app/tests/**/*.test.jsx'
+    ], // Which files to test
     preprocessors: {
       'app/tests/**/*.test.jsx': ['webpack', 'sourcemap'] // Run these before process test files
     },

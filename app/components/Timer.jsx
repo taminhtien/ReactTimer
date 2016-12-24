@@ -52,16 +52,6 @@ class Timer extends React.Component {
     this.setState({status: newStatus})
   }
 
-  renderControl() {
-    const { status } = this.state
-
-    if(status === 'stopped') {
-      return <Controls status={'started'} onStatusChange={(newStatus) => this.handleStatusChange(newStatus)}/> 
-    } else {
-      return <Controls status={this.state.status} onStatusChange={(newStatus) => this.handleStatusChange(newStatus)}/>
-    }
-  }
-
   render() {
     const { count } = this.state
 
@@ -69,7 +59,7 @@ class Timer extends React.Component {
       <div>
         <h1 className='page-title'>Timer App</h1>
         <Clock totalSeconds={count}/>
-        {this.renderControl()}
+        <Controls status={this.state.status} onStatusChange={(newStatus) => this.handleStatusChange(newStatus)}/>
       </div>
     )
   }
